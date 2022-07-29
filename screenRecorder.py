@@ -12,7 +12,6 @@ w, h = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)  # get size
 
 now = datetime.datetime.now()
 parser = argparse.ArgumentParser(description='A test program.')
-parser.add_argument("-pos", nargs="*", help="x pos", default=[0, 0], type=int)  # start x
 parser.add_argument("-fps", help="fps of video", default=120, type=int)  # start x
 parser.add_argument("-size", nargs="*", help="width of recorded area", default=["MAX", "MAX"], type=str)  # start width
 parser.add_argument("-path", help="Path of output file", default=f"C:\\Users\\{username}\\Pictures\\{now.hour}-{now.minute}-{now.second}-{now.day}-{now.month}-{now.year}.avi", type=str)
@@ -23,11 +22,6 @@ error = False
 
 path = args.path
 fps = args.fps
-
-pos = args.pos
-if len(pos) != 2:
-    print("pos must have only value [x, y] length:2")
-    error = True
 
 try:
     size = int(args.size[0].replace("MAX", str(w))), int(args.size[1].replace("MAX", str(h)))
